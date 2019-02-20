@@ -15,34 +15,38 @@ public class StrPtrn {
 
 
         int i,
-            k,
-            j;
+            j,
+            numLevels = 7;
+        //store the entire pattern in a String variable and
+        //reverse it so that it can be used again to print the bottom row
+        String starPtrn = "";
 
-        //go through each row
-        for(i = 0; i < 7; i += 2) {
-            //leave a corresponding number of empty spaces
-            for(k = 6; k > 0; k += 2){
+        //outer loop: handles each row
+        for(i = 0; i < numLevels; i++){
+
+            //a middle loop: print (numLevels -1) spaces
+            // then decreasing by 2 each time the out loop runs
+            for(j = (numLevels-i); j > 1; j--){
+                //print spaces
                 System.out.print(" ");
-
+                starPtrn += " ";
             }
 
-            if(i ==0){
-                System.out.print("      ");
-            }
-            if(i ==2){
-                System.out.print("    ");
-            }
-            if(i ==4){
-                System.out.print("  ");
-            }
-            //print actual asterisk
+            //inner loop: handles each column
             for(j = 0; j <= i; j++){
-
+                //print stars
                 System.out.print("* ");
+                starPtrn += "* ";
             }
-            //insert a newline after each row
+
+            //end line after each row
             System.out.println();
+            starPtrn += "\n";
+
+            //print bottom stars
         }
+
+        System.out.println(starPtrn);
 
 
     }
